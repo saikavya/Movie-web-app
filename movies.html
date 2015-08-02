@@ -1,0 +1,59 @@
+<!DOCTYPE html> <!--refers DTD-specifies rules for markup language--> 
+
+<!--
+  Student Name: Sai Kavya Dukkipati
+  UTA ID : 1000980778
+  URL:http://omega.uta.edu/~sxd0778/project-1CSE5335/movies.html
+-->
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8"/> <!-- unicode encoding-->
+      <title>Display Movie Information</title> <!--title-->
+    <script type="text/javascript" src="movies.js"></script>
+  <style>
+#output {
+    line-height:30px; <!--space between lines-->
+    background-color:#5D7CFB;
+    height:10000px;
+    width:400px;
+    float:left;
+    padding:5px;<!-- specifies space b/w element border and element content. 5px on all 4 sides--> 	      
+}
+#info {
+    width:550px;
+	background-color:#6C88F7;
+    float:right;
+    padding:10px;	 	 
+}
+</style>
+</head>
+  <body onload="initialize();" bgcolor="#C9EF30">
+    <form>
+	
+       <label>Movie title: <input type="text" id="form-input"/></label>
+       <input type="button" onclick="sendRequest();" value="Display Info"/> <!-- VALUE SPECIFIES INITIAL VALUES for text for buttons it is button name -->
+    </form>
+    <div id="output"> <!-- specifies a section on html page-->
+	<ul id="list" style="list-style-type:none">&nbsp;</ul> <!--unordered list <ul> with list elements <li>-->
+	<script>
+			document.getElementById("list").addEventListener("click",function(e) {
+        	if(e.target && e.target.nodeName == "LI") {
+			movieclick(e.target.id);
+			castinfo(e.target.id);
+				}
+			});			
+			</script>
+	</div>
+	<div id= "info">
+	<img id="poster" src="" style="padding-left:100px;" height="150px" width="250px" style="display:visible"><br> <!-- img has no end tag in html5 , important parameter src which specifies url of image-->
+	<label id="genres"></label><br>
+	<label id="summary"></label><br>
+	<label id="castes1"></label>
+	<label id="castes2"></label>
+	<label id="castes3"></label>
+	<label id="castes4"></label>
+	<label id="castes5"></label>
+</div>	
+  </body>
+</html>

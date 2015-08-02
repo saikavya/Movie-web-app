@@ -1,0 +1,22 @@
+<?php
+if(isset($_GET['key']))
+{
+error_reporting(E_ALL);
+ini_set('display_errors','On');
+$value=$_GET['keyword'];
+$xmlstr = file_get_contents("http://sandbox.api.ebaycommercenetwork.com/publisher/3.0/rest/GeneralSearch?apiKey=78b0db8a-0ee1-4939-a2f9-d3cd95ec0fcc&trackingId=7000610&keyword=".$keyw."&numItems=20");
+$xml = new SimpleXMLElement($xmlstr);
+//header('Content-Type: text/xml');
+//print $xmlstr;
+$tabular ="<table border=1>";
+foreach($xml->categories->category->items->product as $res)
+{
+$tabular .="<tr><td><img src =".$res->images->image->sourceURL."></td>";
+$tabular .="<td>".$res->name."</td>;
+$tabular .="<td>".$res->minPrice."</td>;
+$tabular .="<td>".$res->fullDescription."</td></tr>;
+}
+$tabular .="</table>";
+echo $tabular;
+}
+?>
